@@ -4,7 +4,7 @@ function flatten(keyValues) {
 		
 		const	{ assign, getOwnPropertySymbols, keys } = Object,
 				{ isArray } = Array,
-				asArray = isArray(keyValues),
+				assigned = isArray(keyValues) ? [] : {},
 				ks = [ ...getOwnPropertySymbols(keyValues), ...keys(keyValues) ],
 				{ length } = ks,
 				results = [],
@@ -22,7 +22,7 @@ function flatten(keyValues) {
 				while (++i1 < l1) {
 					
 					i2 = -1, tmp.length = 0;
-					while (++i2 < l2) tmp[i2] = assign(asArray ? [] : {}, results[i1 + l3], { [k]: v0[i2] });
+					while (++i2 < l2) tmp[i2] = assign(assigned, results[i1 + l3], { [k]: v0[i2] });
 					
 					results.splice(i1 + l4, 1, ...tmp),
 					i1 += (l5 = tmp.length - 1),
