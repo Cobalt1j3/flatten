@@ -40,4 +40,4 @@ function flatten(keyValues) {
 		
 	} else return [ keyValues ];
 	
-};
+}
